@@ -15,16 +15,18 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-- dev:
+## Build
 
-flutter build apk --dart-define=BUILD_TYPE=testing
-flutter build appbundle --dart-define=BUILD_TYPE=testing
+Build dev:
 
-- prod:
+- flutter build apk --dart-define=BUILD_TYPE=testing
+- flutter build appbundle --dart-define=BUILD_TYPE=testing
 
-flutter build apk --dart-define=BUILD_TYPE=production
-flutter build appbundle --dart-define=BUILD_TYPE=production
+Build prod:
 
-- change package name:
+- flutter build apk --dart-define=BUILD_TYPE=production
+- flutter build appbundle --dart-define=BUILD_TYPE=production
 
-dart run change_app_package_name:main com.new.package.name
+Change package name:
+
+- dart run change_app_package_name:main com.new.package.name
