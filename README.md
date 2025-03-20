@@ -1,4 +1,4 @@
-# ezsale_app
+# Bloc with clean architector
 
 A new Flutter project.
 
@@ -21,8 +21,10 @@ flutter build apk --dart-define=BUILD_TYPE=testing
 flutter build appbundle --dart-define=BUILD_TYPE=testing
 
 - prod:
-  flutter build apk --dart-define=BUILD_TYPE=production
-  flutter build appbundle --dart-define=BUILD_TYPE=production
+
+flutter build apk --dart-define=BUILD_TYPE=production
+flutter build appbundle --dart-define=BUILD_TYPE=production
 
 - change package name:
-  dart run change_app_package_name:main com.new.package.name
+
+dart run change_app_package_name:main com.new.package.name
