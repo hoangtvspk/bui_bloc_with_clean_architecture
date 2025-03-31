@@ -14,10 +14,35 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final result = await remoteDataSource.login(email, password);
       print("result => $result");
-      return Right(User(token: result.token, id: '', name: '', email: ''));
+      return Right(
+          User(token: result.data?.token ?? '', id: '', name: '', email: ''));
     } catch (e) {
       print(e);
       return Left(ServerFailure("Login Failed"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> register(
+      String email, String password, String phoneNumber) async {
+    try {
+      final result =
+          await remoteDataSource.register(email, password, phoneNumber);
+      return Right(result);
+    } catch (e) {
+      print(e);
+      return Left(ServerFailure("Register Failed"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> logout() async {
+    try {
+      final result = await remoteDataSource.logout();
+      return Right(result);
+    } catch (e) {
+      print(e);
+      return Left(ServerFailure("Logout Failed"));
     }
   }
 }
