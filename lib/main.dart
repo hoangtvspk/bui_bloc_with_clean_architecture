@@ -5,7 +5,9 @@ import 'package:flutter_bloc_with_clean_architectore/features/auth/data/datasour
 import 'package:flutter_bloc_with_clean_architectore/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:flutter_bloc_with_clean_architectore/features/auth/domain/repositories/auth_repository.dart';
 import 'package:flutter_bloc_with_clean_architectore/features/auth/domain/usecases/login_usecase.dart';
+import 'package:flutter_bloc_with_clean_architectore/features/auth/domain/usecases/register_usecase.dart';
 import 'package:flutter_bloc_with_clean_architectore/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:flutter_bloc_with_clean_architectore/features/auth/presentation/bloc/register_bloc.dart';
 import 'core/router/app_router.dart';
 
 void main() {
@@ -26,7 +28,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => AuthBloc(LoginUseCase(authRepository))),
+            create: (context) => AuthBloc(
+                 LoginUseCase(authRepository))),
+        BlocProvider(
+            create: (context) => RegisterBloc(
+                authRepository: authRepository))
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

@@ -2,9 +2,24 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecase/usecase.dart';
+import '../entities/user.dart';
 import '../repositories/auth_repository.dart';
 
-class RegisterUseCase extends UseCase<void, RegisterParams> {
+class RegisterParams {
+  final String name;
+  final String email;
+  final String password;
+  final String phoneNumber;
+
+  RegisterParams({
+    required this.name,
+    required this.email,
+    required this.password,
+    required this.phoneNumber,
+  });
+}
+
+class RegisterUseCase implements UseCase<void, RegisterParams> {
   final AuthRepository repository;
 
   RegisterUseCase(this.repository);
@@ -12,18 +27,10 @@ class RegisterUseCase extends UseCase<void, RegisterParams> {
   @override
   Future<Either<Failure, void>> call(RegisterParams params) {
     return repository.register(
-        params.email, params.password, params.phoneNumber);
+      name: params.name,
+      email: params.email,
+      password: params.password,
+      phoneNumber: params.phoneNumber,
+    );
   }
-}
-
-class RegisterParams {
-  final String email;
-  final String password;
-  final String phoneNumber;
-
-  RegisterParams({
-    required this.email,
-    required this.password,
-    required this.phoneNumber,
-  });
 }

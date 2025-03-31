@@ -16,3 +16,9 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+buildscript {
+    ext {
+        namespace = "bui.dev.flutter_bloc_with_clean_architectore"
+    }
+}

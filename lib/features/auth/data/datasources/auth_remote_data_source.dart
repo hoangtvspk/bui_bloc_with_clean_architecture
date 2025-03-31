@@ -8,7 +8,7 @@ import '../models/login/login_model.dart';
 abstract class AuthRemoteDataSource {
   Future<BaseResponse<LoginModel>> login(String email, String password);
   Future<BaseResponse<RegisterModel>> register(
-      String email, String password, String phoneNumber);
+      String email, String password, String phoneNumber, String name);
   Future<void> logout();
 }
 
@@ -35,12 +35,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<BaseResponse<RegisterModel>> register(
-      String email, String password, String phoneNumber) async {
+      String email, String password, String phoneNumber, String name) async {
     try {
       final response = await dioClient.post("/register", data: {
         "email": email,
         "password": password,
         "phoneNumber": phoneNumber,
+        "name": name,
       });
 
       return BaseResponse(data: RegisterModel.fromJson(response.data));

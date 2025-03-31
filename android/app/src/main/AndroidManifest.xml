@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="bui.dev.flutter_bloc_with_clean_architectore">
     <application
         android:label="flutter_bloc_with_clean_architectore"
         android:name="${applicationName}"

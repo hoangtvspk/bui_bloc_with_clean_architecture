@@ -17,7 +17,7 @@ class DioClient {
     _instance ??= DioClient._internal(
       Dio(
         BaseOptions(
-          baseUrl: 'YOUR_BASE_URL', // Replace with your API base URL
+          baseUrl: 'http://localhost:8080', // Replace with your API base URL
           connectTimeout: const Duration(seconds: 30),
           receiveTimeout: const Duration(seconds: 30),
           sendTimeout: const Duration(seconds: 30),

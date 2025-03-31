@@ -79,8 +79,15 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 );
+
               },
             ),
+          TextButton(
+            onPressed: () {
+              context.go('/register');
+            },
+            child: const Text('Don\'t have an account? Register'),
+          ),
           ],
         ),
       ),
