@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_with_clean_architectore/core/config/env_config.dart';
+import 'package:flutter_bloc_with_clean_architectore/core/storage/secure_storage.dart';
 import 'package:flutter_bloc_with_clean_architectore/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:flutter_bloc_with_clean_architectore/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:flutter_bloc_with_clean_architectore/features/auth/domain/repositories/auth_repository.dart';
@@ -9,15 +11,24 @@ import 'package:flutter_bloc_with_clean_architectore/features/auth/presentation/
 import 'core/router/app_router.dart';
 
 void main() async {
+
+  const environment = String.fromEnvironment('ENVIRONMENT', defaultValue: 'dev');
+  await EnvConfig.initialize(environment);
   final authRemoteDataSource = AuthRemoteDataSourceImpl();
   final authRepository = AuthRepositoryImpl(authRemoteDataSource);
-  runApp(MyApp(authRepository: authRepository));
+
+  final token = await SecureStorage().readAccessToken();
+  final initialRoute = token != null ? '/home' : '/';
+
+  
+  runApp(MyApp(authRepository: authRepository, initialRoute: initialRoute));
 }
 
 class MyApp extends StatelessWidget {
+  final String initialRoute;
   final AuthRepository authRepository;
 
-  const MyApp({Key? key, required this.authRepository}) : super(key: key);
+  const MyApp({super.key, required this.authRepository, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +39,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        routerConfig: router,
+        routerConfig: createRouter(initialRoute),
       ),
     );
   }

@@ -18,7 +18,7 @@ class AuthRepositoryImpl implements AuthRepository {
       final result = await remoteDataSource.login(email, password);
       print("result => $result");
       return Right(
-          User(token: result.data?.token ?? '', id: '', name: '', email: ''));
+          User(token: result.data?.token ?? '', id: '', name: 'Hoang', email: ''));
     } catch (e) {
       print(e);
       return const Left(ServerFailure("Login Failed"));

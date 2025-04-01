@@ -14,6 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  static const environment = String.fromEnvironment('ENVIRONMENT', defaultValue: 'dev');
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: true,
               decoration: const InputDecoration(labelText: 'Password'),
             ),
+            const Text(environment),
             const SizedBox(height: 16),
             BlocConsumer<AuthBloc, AuthState>(
               listener: (context, state) {

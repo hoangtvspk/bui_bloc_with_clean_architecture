@@ -42,6 +42,7 @@ dependencies:
   json_annotation: ^4.9.0
   shared_preferences: ^2.5.3
   flutter_launcher_icons: ^0.14.3
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   change_app_package_name: ^1.5.0
@@ -92,6 +93,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - lib/core/config/.env.dev
+    - lib/core/config/.env.staging
+    - lib/core/config/.env.prod
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see

@@ -31,5 +31,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         },
       );
     });
+    on<LogoutEvent>((event, emit) async {
+      await SecureStorage().deleteAccessToken();
+      emit(const AuthState.initial());
+    });
   }
 }

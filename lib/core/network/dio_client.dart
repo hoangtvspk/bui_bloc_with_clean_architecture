@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc_with_clean_architectore/core/config/env_config.dart';
 
 class DioClient {
   static DioClient? _instance;
@@ -17,7 +18,7 @@ class DioClient {
     _instance ??= DioClient._internal(
       Dio(
         BaseOptions(
-          baseUrl: 'http://localhost:8080', // Replace with your API base URL
+          baseUrl: EnvConfig.baseUrl, // Replace with your API base URL
           connectTimeout: const Duration(seconds: 30),
           receiveTimeout: const Duration(seconds: 30),
           sendTimeout: const Duration(seconds: 30),
