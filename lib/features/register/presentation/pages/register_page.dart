@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../bloc/register_bloc.dart';
-import '../../domain/repositories/register_repository.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});

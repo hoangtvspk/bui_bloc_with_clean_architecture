@@ -1,5 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_with_clean_architectore/core/network/dio_client.dart';
 import 'package:flutter_bloc_with_clean_architectore/core/utils/app_utils.dart';
 import 'package:flutter_bloc_with_clean_architectore/features/home/presentation/pages/home_page.dart';
 import 'package:flutter_bloc_with_clean_architectore/features/register/data/datasources/auth_remote_data_source.dart';
