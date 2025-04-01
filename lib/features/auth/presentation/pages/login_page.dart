@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/storage/secure_storage.dart';
 import '../bloc/auth_bloc.dart';
 
 class LoginPage extends StatefulWidget {
@@ -79,15 +80,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 );
-
               },
             ),
-          TextButton(
-            onPressed: () {
-              context.go('/register');
-            },
-            child: const Text('Don\'t have an account? Register'),
-          ),
+            TextButton(
+              onPressed: () {
+                context.go('/register');
+              },
+              child: const Text('Don\'t have an account? Register'),
+            ),
           ],
         ),
       ),

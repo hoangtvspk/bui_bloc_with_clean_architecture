@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../bloc/register_bloc.dart';
-import '../../domain/repositories/auth_repository.dart';
+import '../../domain/repositories/register_repository.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -15,7 +15,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
 
   @override
@@ -63,7 +64,8 @@ class _RegisterPageState extends State<RegisterPage> {
             state.maybeWhen(
               success: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Registration successful! Please login')),
+                  const SnackBar(
+                      content: Text('Registration successful! Please login')),
                 );
                 context.go('/'); // Go to login page
               },
@@ -129,8 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   textInputAction: TextInputAction.done,
                 ),
                 const SizedBox(height: 24),
-                if (state is RegisterLoading)
-                  const CircularProgressIndicator(),
+                if (state is RegisterLoading) const CircularProgressIndicator(),
                 ElevatedButton(
                   onPressed: state is RegisterLoading
                       ? null
@@ -160,4 +161,4 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
-} 
+}

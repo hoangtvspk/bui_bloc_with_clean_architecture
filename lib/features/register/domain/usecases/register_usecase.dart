@@ -2,8 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../entities/user.dart';
-import '../repositories/auth_repository.dart';
+import '../repositories/register_repository.dart';
 
 class RegisterParams {
   final String name;
@@ -20,7 +19,7 @@ class RegisterParams {
 }
 
 class RegisterUseCase implements UseCase<void, RegisterParams> {
-  final AuthRepository repository;
+  final RegisterRepository repository;
 
   RegisterUseCase(this.repository);
 

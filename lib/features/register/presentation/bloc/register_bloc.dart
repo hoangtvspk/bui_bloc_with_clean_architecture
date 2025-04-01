@@ -1,18 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../domain/repositories/auth_repository.dart';
+import '../../domain/repositories/register_repository.dart';
 
 part 'register_event.dart';
 part 'register_state.dart';
 part 'register_bloc.freezed.dart';
 
-
-
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  final AuthRepository _authRepository;
+  final RegisterRepository _registerRepository;
 
-  RegisterBloc({required AuthRepository authRepository})
-      : _authRepository = authRepository,
+  RegisterBloc({required RegisterRepository registerRepository})
+      : _registerRepository = registerRepository,
         super(const RegisterState.initial()) {
     on<Register>(_onRegister);
   }
@@ -23,7 +21,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   ) async {
     emit(const RegisterState.loading());
 
-    final result = await _authRepository.register(
+    final result = await _registerRepository.register(
       name: event.name,
       email: event.email,
       password: event.password,
@@ -35,4 +33,4 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       (_) => const RegisterState.success(),
     ));
   }
-} 
+}

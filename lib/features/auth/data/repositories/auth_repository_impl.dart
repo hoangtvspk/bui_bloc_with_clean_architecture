@@ -10,10 +10,10 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this.remoteDataSource);
 
   @override
-    Future<Either<Failure, User>> login({
-      required String email,
-      required String password,
-    }) async {
+  Future<Either<Failure, User>> login({
+    required String email,
+    required String password,
+  }) async {
     try {
       final result = await remoteDataSource.login(email, password);
       print("result => $result");
@@ -22,27 +22,6 @@ class AuthRepositoryImpl implements AuthRepository {
     } catch (e) {
       print(e);
       return const Left(ServerFailure("Login Failed"));
-    }
-  }
-
-  @override
-  Future<Either<Failure, void>> register({
-    required String name,
-    required String email,
-    required String password,
-    required String phoneNumber,
-  }) async {
-    try {
-      await remoteDataSource.register(
-        name,
-        email,
-        password,
-        phoneNumber,
-      );
-      return const Right(null);
-    } catch (e) {
-      print(e);
-      return const Left(ServerFailure("Registration Failed"));
     }
   }
 

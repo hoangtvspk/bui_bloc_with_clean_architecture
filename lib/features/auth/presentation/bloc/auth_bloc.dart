@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc_with_clean_architectore/core/storage/secure_storage.dart';
 import '../../../../core/error/failure.dart';
 import '../../domain/usecases/login_usecase.dart';
 import '../../domain/entities/user.dart';
@@ -15,13 +16,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.loginUseCase) : super(const AuthState.initial()) {
     on<LoginEvent>((event, emit) async {
       emit(const AuthState.loading());
+
       final Either<Failure, User> result = await loginUseCase(
         LoginParams(email: event.email, password: event.password),
       );
 
-      result.fold(
-        (failure) => emit(AuthState.failure(failure.message)),
-        (user) => emit(AuthState.success(user)),
+      await result.fold(
+        (failure) async => emit(AuthState.failure(failure.message)),
+        (user) async {
+          await SecureStorage().writeAccessToken(user.token);
+          if (!emit.isDone) {
+            emit(AuthState.success(user));
+          }
+        },
       );
     });
   }
