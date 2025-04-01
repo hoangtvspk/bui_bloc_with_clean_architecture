@@ -27,6 +27,18 @@ Build prod:
 - flutter build apk --dart-define=BUILD_TYPE=production
 - flutter build appbundle --dart-define=BUILD_TYPE=production
 
+Remove git locally:
+
+- rm -rf .git
+
 Change package name:
 
 - dart run change_app_package_name:main com.new.package.name
+
+Flutter run generate:
+
+- flutter pub run build_runner build --delete-conflicting-outputs
+
+---
+
+- flutter pub run build_runner build --delete-conflicting-outputs
