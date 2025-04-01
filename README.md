@@ -40,3 +40,11 @@ Flutter run generate:
 - flutter pub run build_runner build --delete-conflicting-outputs
 
 - dart run build_runner build --delete-conflicting-outputs
+
+Change app's icon:
+
+- dart run flutter_launcher_icons
+
+Change native splash:
+
+- flutter pub run flutter_native_splash:create

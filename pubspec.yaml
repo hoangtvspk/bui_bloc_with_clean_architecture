@@ -41,6 +41,7 @@ dependencies:
   go_router: ^14.8.0
   json_annotation: ^4.9.0
   shared_preferences: ^2.5.3
+  flutter_launcher_icons: ^0.14.3
 
 dev_dependencies:
   change_app_package_name: ^1.5.0
@@ -50,6 +51,35 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.5.8
   json_serializable: ^6.9.4
+  flutter_native_splash: ^2.4.5
+
+flutter_launcher_icons:
+  image_path: "assets/images/app_icon.png"
+  android: true
+  ios: false
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/images/app_icon.png"
+  remove_alpha_ios: true
+
+  # =>> dart run flutter_launcher_icons
+
+  # run: flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/splash_content.png
+  color_dark: "#ffffff"
+  android_gravity: center
+  ios_content_mode: center
+  fullscreen: true
+  branding: assets/images/splash_brand.png # This should be an image containing your text
+  branding_mode: bottom
+  branding_bottom_padding: 42
+
+  android_12:
+    image: assets/images/splash_content_android_12.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/images/splash_content_android_12.png
+    icon_background_color_dark: "#ffffff"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -60,9 +90,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
